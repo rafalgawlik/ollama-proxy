@@ -1,6 +1,5 @@
 name: Docker Publish
 
-# Uruchom workflow przy pushu do gałęzi main
 on:
   push:
     branches: [ "main" ]
@@ -10,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write # To jest potrzebne do publikacji w GHCR
+      packages: write
 
     steps:
       - name: Checkout repository
@@ -28,6 +27,9 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=edge,branch={{default_branch}}
+            type=sha
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
