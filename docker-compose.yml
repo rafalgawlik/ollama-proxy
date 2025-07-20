@@ -6,6 +6,6 @@ services:
     ports:
       - "8087:8087"
     environment:
-      - PROXY_API_KEY=supersecret
-      - OLLAMA_URL=http://your-ollama:1143
+      - PROXY_API_KEY=supersecret #change me
+      - OLLAMA_URL=http://your-ollama:1143 #change me
     restart: unless-stopped
