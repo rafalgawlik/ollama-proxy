@@ -8,7 +8,7 @@ By default, the Ollama API is open and accessible to anyone on the same network.
 
 **Primary use case:**
 
-* You have an Ollama server running on one machine (e.g., `your-ollama-ip`).
+* You have an Ollama server running on one machine.
 * You want to securely access its API from another machine, an application, or even through a Cloudflare tunnel, without exposing it to the entire world.
 
 ## 🚀 Key Features
