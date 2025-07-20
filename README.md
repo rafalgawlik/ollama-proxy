@@ -68,7 +68,7 @@ The project is fully containerized, so all you need is Docker.
           # CHANGE TO YOUR OWN SECRET API KEY!
           - PROXY_API_KEY=supersecret 
           # ENTER THE CORRECT URL OF YOUR OLLAMA INSTANCE
-          - OLLAMA_URL=http://your-ollama-ip:11434 
+          - OLLAMA_URL=http://your-ollama:11434 
         restart: unless-stopped
     ```
     * `PROXY_API_KEY`: Set your own unique key here.
