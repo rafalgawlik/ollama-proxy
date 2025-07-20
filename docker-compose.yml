@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  proxy:
+    build: .
+    ports:
+      - "8087:8087"
+    environment:
+      - PROXY_API_KEY=supersecret
+      - OLLAMA_URL=http://your-ollama:1143
+    restart: unless-stopped
