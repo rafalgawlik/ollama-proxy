@@ -52,7 +52,7 @@ The project is fully containerized, so all you need is Docker.
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/rafalgawlik/ollama-proxy.git](https://github.com/rafalgawlik/ollama-proxy.git)
+    git clone https://github.com/rafalgawlik/ollama-proxy.git
     cd ollama-proxy
     ```
 
