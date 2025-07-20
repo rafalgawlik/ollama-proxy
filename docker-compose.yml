@@ -2,10 +2,12 @@ version: "3.8"
 
 services:
   proxy:
-    build: .
+    image: ghcr.io/rafalgawlik/ollama-proxy:latest
+    container_name: ollama-proxy
     ports:
-      - "8087:8087"
+      - "8087:8080" 
     environment:
-      - PROXY_API_KEY=supersecret #change me
-      - OLLAMA_URL=http://your-ollama:11434 #change me
+      - API_KEY=supersecret # change me!
+      - OLLAMA_HOST=http://your-ollama:11434 # change me!
     restart: unless-stopped
+    pull_policy: always
