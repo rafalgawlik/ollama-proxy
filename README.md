@@ -10,7 +10,7 @@ By default, the Ollama API is open and accessible to anyone on the same network.
 
 **Primary use case:**
 
-* You have an Ollama server running on one machine (e.g., `your-ollama-ip`).
+* You have an Ollama server running on one machine.
 * You want to securely access its API from another machine, an application, or even through a Cloudflare tunnel, without exposing it to the entire world.
 
 ## 🚀 Key Features
@@ -67,7 +67,7 @@ This is the easiest way to get started. You don't need to clone the repository.
           # CHANGE TO YOUR OWN SECRET API KEY!
           - PROXY_API_KEY=supersecret
           # ENTER THE CORRECT URL OF YOUR OLLAMA INSTANCE
-          - OLLAMA_URL=http://your-ollama-ip:11434
+          - OLLAMA_URL=http://your-ollama:11434
     ```
 
 2.  **Customize the environment variables:**
