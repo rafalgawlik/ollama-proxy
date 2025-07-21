@@ -137,11 +137,6 @@ curl http://localhost:8087/api/generate \
 └── requirements.txt    # Python dependencies
 ```
 
-## 🏷️ GitHub Topics
-To improve visibility, add the following topics to your GitHub repository settings:
-
-`ollama` `proxy` `api-gateway` `fastapi` `docker` `security` `llm` `self-hosted` `api-proxy`
-
 ---
 
 Made with ❤️ using Python, FastAPI, and Docker.
