@@ -1,5 +1,7 @@
 # 🛡️ Ollama API Proxy
 
+> A simple, self-hosted proxy to secure your Ollama API with a private Bearer Token.
+
 A simple yet powerful proxy server for [Ollama](https://ollama.com/) that allows you to secure API access with a private **Bearer Token**. It's the perfect solution if you want to expose your Ollama instance on a local network or the internet safely.
 
 ## ✨ Why use this?
@@ -8,7 +10,7 @@ By default, the Ollama API is open and accessible to anyone on the same network.
 
 **Primary use case:**
 
-* You have an Ollama server running on one machine.
+* You have an Ollama server running on one machine (e.g., `your-ollama-ip`).
 * You want to securely access its API from another machine, an application, or even through a Cloudflare tunnel, without exposing it to the entire world.
 
 ## 🚀 Key Features
@@ -41,45 +43,58 @@ sequenceDiagram
 
 ## 🛠️ Installation and Setup
 
-The project is fully containerized, so all you need is Docker.
+You can run this proxy either by building from the source or by using the pre-built Docker image directly.
 
-### Prerequisites
+### Method 1: Running with Docker Compose (Recommended)
 
-* [Docker](https://www.docker.com/get-started)
-* [Docker Compose](https://docs.docker.com/compose/install/)
+This is the easiest way to get started. You don't need to clone the repository.
 
-### Steps
+1.  **Create a `docker-compose.yml` file:**
+    Create a new file named `docker-compose.yml` and paste the following content into it:
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/rafalgawlik/ollama-proxy.git
-    cd ollama-proxy
-    ```
-
-2.  **Configure `docker-compose.yml`:**
-    Open the `docker-compose.yml` file and customize the environment variables:
     ```yaml
+    version: "3.8"
+
     services:
-      proxy:
-        build: .
+      ollama-proxy:
+        image: ghcr.io/rafalgawlik/ollama-proxy:latest
+        container_name: ollama-proxy
+        restart: unless-stopped
+        pull_policy: always
         ports:
           - "8087:8087"
         environment:
           # CHANGE TO YOUR OWN SECRET API KEY!
-          - PROXY_API_KEY=supersecret 
+          - PROXY_API_KEY=supersecret
           # ENTER THE CORRECT URL OF YOUR OLLAMA INSTANCE
-          - OLLAMA_URL=http://your-ollama:11434 
-        restart: unless-stopped
+          - OLLAMA_URL=http://your-ollama-ip:11434
     ```
+
+2.  **Customize the environment variables:**
     * `PROXY_API_KEY`: Set your own unique key here.
     * `OLLAMA_URL`: Enter the IP address and port where your Ollama instance is running.
 
-3.  **Build and run the container:**
-    In the main project folder, run the following command:
+3.  **Run the container:**
+    In the same directory where you created the file, run:
+    ```bash
+    docker-compose up -d
+    ```
+    The proxy will now be running on port `8087`.
+
+### Method 2: Building from Source
+
+Use this method if you want to modify the code.
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/rafalgawlik/ollama-proxy.git](https://github.com/rafalgawlik/ollama-proxy.git)
+    cd ollama-proxy
+    ```
+
+2.  **Build and run the container:**
     ```bash
     docker-compose up --build -d
     ```
-    The proxy will now be running on port `8087` of the machine you launched it on.
 
 ## 💡 Usage Examples
 
@@ -121,6 +136,11 @@ curl http://localhost:8087/api/generate \
 ├── main.py             # The main application logic in FastAPI
 └── requirements.txt    # Python dependencies
 ```
+
+## 🏷️ GitHub Topics
+To improve visibility, add the following topics to your GitHub repository settings:
+
+`ollama` `proxy` `api-gateway` `fastapi` `docker` `security` `llm` `self-hosted` `api-proxy`
 
 ---
 
